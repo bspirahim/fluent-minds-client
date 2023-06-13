@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 
 const Navber = () => {
 
+    const { user, logOut } = useContext(AuthContext)
+
     const navOptions = <>
 
         <li><Link to='/'>Home</Link></li>
