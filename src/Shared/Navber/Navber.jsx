@@ -10,7 +10,8 @@ const Navber = () => {
 
         <li><Link to='/'>Home</Link></li>
         <li><Link>Instructors</Link></li>
-        <li><Link>Classes</Link></li>
+        <li><Link to='/classes'>Classes</Link></li>
+        <li><Link to='/addclass'>Add Class</Link></li>
     </>
 
 
@@ -36,21 +37,21 @@ const Navber = () => {
                         Fluent-Minds
                     </a>
                 </div>
-                <div className="navbar-end">
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-2 text-black  text-lg font-bold">
                             {navOptions}
                         </ul>
                     </div>
+                <div className="navbar-end">
                     {
                         user ? <>
 
                             <div className='flex items-center'>
                                 <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
-                                    <img src={user?.photoURL ? user.photoURL : "/images/profile.png"} className='w-12 mr-4 rounded-full' alt="" />
+                                    <img src={user?.photoURL ? user.photoURL : "/images/profile.png"} className='w-10 mr-4 rounded-full' alt="" />
                                 </div>
 
-                                <button onClick={handleLogOut} className="btn btn-primary rounded-full text-white font-normal text-lg my-4 px-5">Log Out</button>
+                                <button onClick={handleLogOut} className="btn btn-error  rounded-full text-white font-normal text-lg my-4">Log Out</button>
                             </div>
                             </> : <>
                                 <Link to='login'> <button className="btn btn-primary rounded-full text-white font-normal text-lg my-4 px-5">Sign In</button></Link>
