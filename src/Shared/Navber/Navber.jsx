@@ -51,7 +51,7 @@ const Navber = () => {
                                     <img src={user?.photoURL ? user.photoURL : "/images/profile.png"} className='w-10 mr-4 rounded-full' alt="" />
                                 </div>
 
-                                <button onClick={handleLogOut} className="btn btn-error  rounded-full text-white font-normal text-lg my-4">Log Out</button>
+                                <button onClick={handleLogOut} className="btn bg-red-700  rounded-full text-white font-normal text-lg my-4">Log Out</button>
                             </div>
                             </> : <>
                                 <Link to='login'> <button className="btn btn-primary rounded-full text-white font-normal text-lg my-4 px-5">Sign In</button></Link>
