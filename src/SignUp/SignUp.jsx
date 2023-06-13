@@ -6,6 +6,7 @@ import { AuthContext } from '../Providers/AuthProvider';
 import Lottie from "lottie-react";
 import reader from "../../public/login.json";
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 const SignUp = () => {
     const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
@@ -23,16 +24,12 @@ const SignUp = () => {
                     .then(() => {
                         console.log('user profile updated')
                         reset()
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'User Created successfully',
-                            showConfirmButton: false,
-                            timer: 1500
-                        })
+                        toast.success('User Created Successfully')
                         navigate('/')
                     })
-                    .catch(error => console.log(error));
+                    .catch(error => {
+                        toast.error(error.message);
+                    });
             })
     };
     console.log(watch("example"));

@@ -2,8 +2,8 @@
 
 const Banner = () => {
     return (
-    <div className="bg-[#F0FFF0]">
-          <div className="md:flex justify-between items-center max-w-screen-lg mx-auto md:pt-16 pb-8 ">
+    <div className="bg-[#F0FFF0] md:h-[90vh]">
+          <div className="md:flex justify-between items-center max-w-screen-lg mx-auto md:pt-24 pb-8 ">
           <div className="w-2/4">
             <p className="text-red-500">Are you ready to Learn?</p>
             <h1 className="text-4xl my-3 font-bold">Learn with fun <br />

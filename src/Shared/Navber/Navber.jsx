@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Navber = () => {
 
@@ -10,9 +12,16 @@ const Navber = () => {
         <li><Link>Instructors</Link></li>
         <li><Link>Classes</Link></li>
     </>
+
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error))
+    }
     return (
-        <div className="bg-[#F0FFF0] ">
-            <div className="navbar max-w-screen-lg mx-auto p-0 m-0 ">
+        <div className="bg-[#F0FFF0]">
+            <div className="navbar max-w-screen-lg mx-auto p-0 m-0">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -33,11 +42,24 @@ const Navber = () => {
                             {navOptions}
                         </ul>
                     </div>
-                   <Link to='login'> <button className="btn btn-primary rounded-full text-white font-normal text-lg my-4 px-5">Sign In</button></Link>
+                    {
+                        user ? <>
+
+                            <div className='flex items-center'>
+                                <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
+                                    <img src={user?.photoURL ? user.photoURL : "/images/profile.png"} className='w-12 mr-4 rounded-full' alt="" />
+                                </div>
+
+                                <button onClick={handleLogOut} className="btn btn-primary rounded-full text-white font-normal text-lg my-4 px-5">Log Out</button>
+                            </div>
+                            </> : <>
+                                <Link to='login'> <button className="btn btn-primary rounded-full text-white font-normal text-lg my-4 px-5">Sign In</button></Link>
+                            </>
+                    }
+                        </div>
                 </div>
             </div>
-        </div>
-    );
+            );
 };
 
-export default Navber;
+            export default Navber;

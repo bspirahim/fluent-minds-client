@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
 import { AuthContext } from '../Providers/AuthProvider';
 import Lottie from "lottie-react";
 import reader from "../../public/login.json";
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 const Login = () => {
     const { signIn } = useContext(AuthContext)
@@ -24,16 +24,8 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             console.log(user)
-            Swal.fire({
-                title: 'User Login Successfully',
-                showClass: {
-                  popup: 'animate__animated animate__fadeInDown'
-                },
-                hideClass: {
-                  popup: 'animate__animated animate__fadeOutUp'
-                }
-              })
-              navigate(from, { replace: true });
+            navigate(from, { replace: true });
+            toast.success('User Successfully login')
         })
     }
 
