@@ -23,12 +23,12 @@ const router = createBrowserRouter([
       {
         path: '/classes',
         element: <Classes></Classes>,
-        loader: () => fetch('http://localhost:5000/classes')
+        loader: () => fetch(`${import.meta.env.VITE_SERVER_URL}/classes`)
       },
       {
         path: 'class/:id',
         element: <SingleClass></SingleClass>,
-        loader: ({ params }) => fetch(`http://localhost:5000/classes/${params.id}`)
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_SERVER_URL}/classes/${params.id}`)
       },
       {
         path: '/login',

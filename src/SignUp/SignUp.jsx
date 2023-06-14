@@ -1,7 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
-import Swal from 'sweetalert2';
 import { AuthContext } from '../Providers/AuthProvider';
 import Lottie from "lottie-react";
 import reader from "../../public/login.json";
@@ -9,20 +8,18 @@ import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 
 const SignUp = () => {
-    const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     const navigate = useNavigate()
 
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const onSubmit = data => {
-        console.log(data)
         createUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
                 updateUserProfile(data.name, data.photoUrl)
                     .then(() => {
-                        console.log('user profile updated')
                         reset()
                         toast.success('User Created Successfully')
                         navigate('/')
@@ -32,7 +29,6 @@ const SignUp = () => {
                     });
             })
     };
-    console.log(watch("example"));
 
     return (
         <div>
@@ -43,7 +39,7 @@ const SignUp = () => {
                     </div>
                     <div className="card md:w-1/2 flex-shrink-0 max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-                        <h1 className="text-3xl ">Sign Up</h1>
+                            <h1 className="text-3xl ">Sign Up</h1>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Name</span>
@@ -88,16 +84,16 @@ const SignUp = () => {
                             </div>
                             <p className='text-center'><small>Already Registerd? <Link to='/login' className='text-primary' >Please Sign in</Link></small> </p>
                             <div className="text-center mt-4">
-                                    <button className="btn btn-circle">
+                                <button className="btn btn-circle">
                                     <FaGoogle></FaGoogle>
-                                    </button>
-                                    <button className="btn btn-circle mx-4">
+                                </button>
+                                <button className="btn btn-circle mx-4">
                                     <FaGithub></FaGithub>
-                                    </button>
-                                    <button className="btn btn-circle">
+                                </button>
+                                <button className="btn btn-circle">
                                     <FaFacebook></FaFacebook>
-                                    </button>
-                                </div>
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>

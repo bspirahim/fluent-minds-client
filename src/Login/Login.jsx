@@ -1,18 +1,46 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
 import Lottie from "lottie-react";
 import reader from "../../public/login.json";
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
 import { toast } from 'react-toastify';
+import useLogin from '../hooks/useLogin';
 
 const Login = () => {
     const { signIn } = useContext(AuthContext)
     const location = useLocation()
     const navigate = useNavigate()
 
-    let from = location.state?.from?.pathname || "/";
+    const from = location.state?.from?.pathname || '/';
 
+    
+    const [role, setRole] = useState('user');
+    const [LoginInfo, setLoginInfo] = useState({
+        email: null,
+        name: null,
+        role,
+        photoURL: null,
+        insert: false
+    });
+    const [token] = useLogin(LoginInfo);
+
+    const jwt = (result, insert = true) => {
+        //setLoading(true);
+        setLoginInfo({
+            email: result.user.email,
+            name: result.user.displayName,
+            role,
+            photoURL: result.user.photoURL,
+            insert,
+            gender: null
+        }); setTimeout(() => {
+            toast("Login success!");
+            //setLoading(false);
+            navigate(from, { replace: true });
+        }, 1000);
+
+    }
 
     const handleLogin = event => {
         event.preventDefault();
@@ -21,12 +49,9 @@ const Login = () => {
         const password = form.password.value;
         console.log(email, password);
         signIn(email, password)
-        .then(result => {
-            const user = result.user;
-            console.log(user)
-            navigate(from, { replace: true });
-            toast.success('User Successfully login')
-        })
+            .then(result => {
+                jwt(result, false);
+            })
     }
 
 
@@ -34,12 +59,12 @@ const Login = () => {
         <div>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
-                <div className="text-center lg:text-left md:w-2/4">
+                    <div className="text-center lg:text-left md:w-2/4">
                         <Lottie animationData={reader} loop={true} />
                     </div>
                     <div className="card md:w-1/2 flex-shrink-0 max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleLogin} className="card-body">
-                        <h1 className="text-3xl ">Sign In</h1>
+                            <h1 className="text-3xl ">Sign In</h1>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
@@ -60,16 +85,16 @@ const Login = () => {
                             </div>
                             <p className='text-center'><small>New here? <Link to='/signup' className='text-primary' >Create a new account</Link></small> </p>
                             <div className="text-center mt-4">
-                                    <button className="btn btn-circle">
+                                <button className="btn btn-circle">
                                     <FaGoogle></FaGoogle>
-                                    </button>
-                                    <button className="btn btn-circle mx-4">
+                                </button>
+                                <button className="btn btn-circle mx-4">
                                     <FaGithub></FaGithub>
-                                    </button>
-                                    <button className="btn btn-circle">
+                                </button>
+                                <button className="btn btn-circle">
                                     <FaFacebook></FaFacebook>
-                                    </button>
-                                </div>
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>
