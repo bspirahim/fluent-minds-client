@@ -10,6 +10,7 @@ import AddClass from "../Pages/Classes/AddClass";
 import SingleClass from "../Pages/Classes/SingleClass";
 import Dashboard from "../Layout/Dashboard";
 import DashboardContent from "../Pages/Dashboard/DashboardContent";
+import AllClass from "../Pages/Dashboard/AllClass/AllClass";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,12 @@ const router = createBrowserRouter([
         path: '/dashboard/addclass',
         element: <AddClass></AddClass>
       },
+      {
+        path: '/dashboard/allclass',
+        element: <AllClass></AllClass>,
+        loader: () => fetch(`${import.meta.env.VITE_SERVER_URL}/classes`) 
+      }
+      
     ]
   },
 ]);

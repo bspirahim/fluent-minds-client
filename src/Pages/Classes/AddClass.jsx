@@ -74,7 +74,7 @@ const AddClass = () => {
                         <label className="label">
                             <span className="label-text">Price </span>
                         </label>
-                        <input type="text" name='price' defaultValue={'$' + '74.99'}  className="input input-bordered" required />
+                        <input type="text" name='price'  className="input input-bordered" required />
                     </div>
                 </div>
                 <div className="form-control mt-6">
