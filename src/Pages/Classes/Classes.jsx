@@ -1,33 +1,29 @@
-import { key } from "localforage";
-import { useLoaderData } from "react-router-dom";
+
+import { Link, useLoaderData } from 'react-router-dom';
 
 const Classes = () => {
     const classes = useLoaderData()
-    console.log(classes)
     return (
-        <div>
+        <div className='grid md:grid-cols-3 gap-10 max-w-screen-lg mx-auto mt-20'>
             {
-                classes.map(singleClass =>
-                    <div 
-                    key = {singleClass._id}
-                    >
-                        
-                        <div className="hero min-h-screen bg-base-200">
-                            <div className="hero-content flex-col lg:flex-row">
-                                <img src={singleClass.classImage} className="max-w-sm rounded-lg shadow-2xl" />
-                                <div>
-                                    <h1 className="text-2xl font-bold">{singleClass.className}</h1>
-                                    <p className="py-6">Available Seats:{singleClass.seats}</p>
-                                    <p className="py-6">Price:{singleClass.price}</p>
-                                    <button className="btn btn-primary">Get Started</button>
-                                </div>
+                classes.map(singleClass => 
+                    <>
+
+                        <div className="card w-auto bg-base-100 shadow-xl">
+                            <figure><img src={singleClass.classImage} alt="Shoes" /></figure>
+                            <p className='absolute right-0 top-2 me-3 px-2 bg-primary rounded-full'>${singleClass.price}</p>
+                            <div className="card-body">
+                                <Link to={`/class/${singleClass._id}`}><h2 className="card-title text-sm">{singleClass.className}</h2></Link>
+                                <small>Instructor: {singleClass.instractorName}</small>
+                                <small>Available Seats: {singleClass.seats}</small>
                             </div>
                         </div>
-                    </div>
+                    </>
+
 
                 )
             }
-        </div >
+        </div>
     );
 };
 
