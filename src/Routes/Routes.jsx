@@ -11,6 +11,7 @@ import SingleClass from "../Pages/Classes/SingleClass";
 import Dashboard from "../Layout/Dashboard";
 import DashboardContent from "../Pages/Dashboard/DashboardContent";
 import AllClass from "../Pages/Dashboard/AllClass/AllClass";
+import UpdateClass from "../Pages/Dashboard/AllClass/UpdateClass";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,11 @@ const router = createBrowserRouter([
         path: 'class/:id',
         element: <SingleClass></SingleClass>,
         loader: ({ params }) => fetch(`${import.meta.env.VITE_SERVER_URL}/classes/${params.id}`)
+      },
+      {
+        path: '/updateclass/:id',
+        element: <UpdateClass></UpdateClass>,
+        loader: ({ params }) => fetch(`http://localhost:5000/classes/${params.id}`)
       },
       {
         path: '/login',
@@ -57,9 +63,9 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/allclass',
         element: <AllClass></AllClass>,
-        loader: () => fetch(`${import.meta.env.VITE_SERVER_URL}/classes`) 
-      }
-      
+        loader: () => fetch(`${import.meta.env.VITE_SERVER_URL}/classes`)
+      },
+
     ]
   },
 ]);

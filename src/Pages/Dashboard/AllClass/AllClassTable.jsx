@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const AllClassTable = ({item, index, handleDelete}) => {
@@ -28,7 +29,7 @@ const AllClassTable = ({item, index, handleDelete}) => {
             <th>
                 <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-700 btn-md text-white mr-3"><FaTrashAlt></FaTrashAlt></button>
 
-                <button onClick={() => handleUpdate()} className="btn btn-ghost bg-sky-700 btn-md text-white"><FaPencilAlt></FaPencilAlt> </button>
+               <Link to={`/updateclass/${item._id}`}> <button className="btn btn-ghost bg-sky-700 btn-md text-white"><FaPencilAlt></FaPencilAlt></button></Link>
             </th>
         </tr>
     );
