@@ -6,6 +6,7 @@ import reader from "../../public/login.json";
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import useLogin from '../hooks/useLogin';
+import SocialLogin from '../Pages/SocialLogin/SocialLogin';
 
 const Login = () => {
     const { signIn } = useContext(AuthContext)
@@ -84,17 +85,8 @@ const Login = () => {
                                 <input className="btn btn-primary rounded-full text-white font-normal text-lg px-5" type="submit" value="Login" />
                             </div>
                             <p className='text-center'><small>New here? <Link to='/signup' className='text-primary' >Create a new account</Link></small> </p>
-                            <div className="text-center mt-4">
-                                <button className="btn btn-circle">
-                                    <FaGoogle></FaGoogle>
-                                </button>
-                                <button className="btn btn-circle mx-4">
-                                    <FaGithub></FaGithub>
-                                </button>
-                                <button className="btn btn-circle">
-                                    <FaFacebook></FaFacebook>
-                                </button>
-                            </div>
+                            
+                            <SocialLogin from={from}></SocialLogin>
                         </form>
                     </div>
                 </div>

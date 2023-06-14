@@ -6,6 +6,7 @@ import Lottie from "lottie-react";
 import reader from "../../public/login.json";
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
 import { toast } from 'react-toastify';
+import SocialLogin from '../Pages/SocialLogin/SocialLogin';
 
 const SignUp = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -83,17 +84,7 @@ const SignUp = () => {
                                 <input className="btn btn-primary  rounded-full text-white font-normal text-lg px-5" type="submit" value="Sign Up" />
                             </div>
                             <p className='text-center'><small>Already Registerd? <Link to='/login' className='text-primary' >Please Sign in</Link></small> </p>
-                            <div className="text-center mt-4">
-                                <button className="btn btn-circle">
-                                    <FaGoogle></FaGoogle>
-                                </button>
-                                <button className="btn btn-circle mx-4">
-                                    <FaGithub></FaGithub>
-                                </button>
-                                <button className="btn btn-circle">
-                                    <FaFacebook></FaFacebook>
-                                </button>
-                            </div>
+                            <SocialLogin ></SocialLogin>
                         </form>
                     </div>
                 </div>

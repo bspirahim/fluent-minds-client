@@ -12,6 +12,7 @@ import Dashboard from "../Layout/Dashboard";
 import DashboardContent from "../Pages/Dashboard/DashboardContent";
 import AllClass from "../Pages/Dashboard/AllClass/AllClass";
 import UpdateClass from "../Pages/Dashboard/AllClass/UpdateClass";
+import PrivateRoute from "../Pages/PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -50,7 +51,7 @@ const router = createBrowserRouter([
 
   {
     path: "/dashboard",
-    element: <Dashboard></Dashboard>,
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
       {
         path: '/dashboard',

@@ -51,10 +51,10 @@ const AllClass = () => {
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Food</th>
-                            <th>Item Name</th>
-                            <th>Price</th>
-                            <th>Action</th>
+                            <th className='text-center'>Class</th>
+                            <th className='text-center'>Class Name</th>
+                            <th className='text-center'>Price</th>
+                            <th className='text-center'>Action</th>
                         </tr>
                     </thead>
                     <tbody>
