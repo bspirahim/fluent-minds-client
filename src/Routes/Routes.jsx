@@ -13,11 +13,13 @@ import DashboardContent from "../Pages/Dashboard/DashboardContent";
 import AllClass from "../Pages/Dashboard/AllClass/AllClass";
 import UpdateClass from "../Pages/Dashboard/AllClass/UpdateClass";
 import PrivateRoute from "../Pages/PrivateRoute/PrivateRoute";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
