@@ -9,7 +9,7 @@ const Navber = () => {
     const navOptions = <>
 
         <li><Link to='/'>Home</Link></li>
-        <li><Link to='/'>Instructors</Link></li>
+        <li><Link to='/instructor'>Instructors</Link></li>
         <li><Link to='/classes'>Classes</Link></li>
         <li><Link to='/dashboard'>Dashboard</Link></li>
     </>

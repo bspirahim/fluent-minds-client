@@ -2,7 +2,7 @@ import { useLoaderData } from "react-router-dom";
 
 const SingleClass = () => {
     const course = useLoaderData()
-    console.log(course)
+
     return (
         <div>
             <div className="hero bg-base-200 max-w-screen-lg mx-auto my-20">

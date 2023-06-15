@@ -1,34 +1,57 @@
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
 import Lottie from "lottie-react";
 import reader from "../../public/login.json";
-import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import SocialLogin from '../Pages/SocialLogin/SocialLogin';
+import useLogin from '../hooks/useLogin';
 
 const SignUp = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     const navigate = useNavigate()
 
+    const from = '/';
+
+    const [LoginInfo, setLoginInfo] = useState({
+        email: null,
+        name: null,
+        role: 'user',
+        insert: false
+    });
+
+    useLogin(LoginInfo);
+
+    const jwt = (result, insert = true) => {
+        setLoginInfo({
+            email: result.user.email,
+            name: result.user.displayName,
+            role: 'user',
+            insert,
+        }); setTimeout(() => {
+            toast("Signup success!");
+            navigate(from, { replace: true });
+        }, 1000);
+
+    }
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const onSubmit = data => {
         createUser(data.email, data.password)
             .then(result => {
-                const loggedUser = result.user;
-                console.log(loggedUser)
                 updateUserProfile(data.name, data.photoUrl)
                     .then(() => {
                         reset()
-                        toast.success('User Created Successfully')
-                        navigate('/')
+                        jwt(result);
                     })
                     .catch(error => {
                         toast.error(error.message);
                     });
             })
+            .catch(error => {
+                toast.error(error.message);
+            });
     };
 
     return (
@@ -84,7 +107,7 @@ const SignUp = () => {
                                 <input className="btn btn-primary  rounded-full text-white font-normal text-lg px-5" type="submit" value="Sign Up" />
                             </div>
                             <p className='text-center'><small>Already Registerd? <Link to='/login' className='text-primary' >Please Sign in</Link></small> </p>
-                            <SocialLogin ></SocialLogin>
+                            <SocialLogin jwt={jwt}></SocialLogin>
                         </form>
                     </div>
                 </div>

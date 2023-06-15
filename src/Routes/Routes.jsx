@@ -36,11 +36,6 @@ const router = createBrowserRouter([
         loader: ({ params }) => fetch(`${import.meta.env.VITE_SERVER_URL}/classes/${params.id}`)
       },
       {
-        path: '/updateclass/:id',
-        element: <UpdateClass></UpdateClass>,
-        loader: ({ params }) => fetch(`http://localhost:5000/classes/${params.id}`)
-      },
-      {
         path: '/login',
         element: <Login></Login>
       },
@@ -62,6 +57,11 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/addclass',
         element: <AddClass></AddClass>
+      },
+      {
+        path: '/dashboard/updateclass/:id',
+        element: <UpdateClass></UpdateClass>,
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_SERVER_URL}/classes/${params.id}`)
       },
       {
         path: '/dashboard/allclass',

@@ -3,7 +3,6 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
 import Lottie from "lottie-react";
 import reader from "../../public/login.json";
-import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import useLogin from '../hooks/useLogin';
 import SocialLogin from '../Pages/SocialLogin/SocialLogin';
@@ -15,26 +14,22 @@ const Login = () => {
 
     const from = location.state?.from?.pathname || '/';
 
-    
-    const [role, setRole] = useState('user');
     const [LoginInfo, setLoginInfo] = useState({
         email: null,
         name: null,
-        role,
-        photoURL: null,
+        role: 'user',
         insert: false
     });
-    const [token] = useLogin(LoginInfo);
+
+    useLogin(LoginInfo);
 
     const jwt = (result, insert = true) => {
         //setLoading(true);
         setLoginInfo({
             email: result.user.email,
             name: result.user.displayName,
-            role,
-            photoURL: result.user.photoURL,
+            role: 'user',
             insert,
-            gender: null
         }); setTimeout(() => {
             toast("Login success!");
             //setLoading(false);
@@ -53,6 +48,9 @@ const Login = () => {
             .then(result => {
                 jwt(result, false);
             })
+            .catch(error => {
+                toast.error(error.message);
+            });
     }
 
 
@@ -85,8 +83,8 @@ const Login = () => {
                                 <input className="btn btn-primary rounded-full text-white font-normal text-lg px-5" type="submit" value="Login" />
                             </div>
                             <p className='text-center'><small>New here? <Link to='/signup' className='text-primary' >Create a new account</Link></small> </p>
-                            
-                            <SocialLogin from={from}></SocialLogin>
+
+                            <SocialLogin jwt={jwt}></SocialLogin>
                         </form>
                     </div>
                 </div>

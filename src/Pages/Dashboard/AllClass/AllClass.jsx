@@ -7,7 +7,7 @@ const AllClass = () => {
     const data = useLoaderData()
     const [classes, setClasses] = useState(data)
 
-    const handleDelete = item =>{
+    const handleDelete = item => {
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -16,26 +16,26 @@ const AllClass = () => {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
-              fetch(`http://localhost:5000/classes/${item._id}`, {
-                method:'DELETE'
-              })
-              .then(res => res.json())
-              .then(data => {
-                if(data.deletedCount > 0){
-                    Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                      )
-                      const remaining = classes.filter(cls => cls._id !== item._id);
-                      setClasses(remaining);
-                }
-              })
+                fetch(`http://localhost:5000/classes/${item._id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                            const remaining = classes.filter(cls => cls._id !== item._id);
+                            setClasses(remaining);
+                        }
+                    })
             }
-          })
-        }
+        })
+    }
 
 
 
@@ -61,16 +61,15 @@ const AllClass = () => {
                         {
 
                             classes.map((item, index) => <AllClassTable
-                             key={item._id}
-                             item={item}
-                             index={index}
-                             handleDelete={handleDelete}
+                                key={item._id}
+                                item={item}
+                                index={index}
+                                handleDelete={handleDelete}
                             >
 
-                            </AllClassTable>    )
-
+                            </AllClassTable>)
                         }
-                        
+
                     </tbody>
                 </table>
             </div>
