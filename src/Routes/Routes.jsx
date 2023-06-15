@@ -14,6 +14,8 @@ import AllClass from "../Pages/Dashboard/AllClass/AllClass";
 import UpdateClass from "../Pages/Dashboard/AllClass/UpdateClass";
 import PrivateRoute from "../Pages/PrivateRoute/PrivateRoute";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import MySelectedClass from "../Pages/Dashboard/MySelectedClass/MySelectedClass";
+
 
 const router = createBrowserRouter([
   {
@@ -68,6 +70,12 @@ const router = createBrowserRouter([
         element: <AllClass></AllClass>,
         loader: () => fetch(`${import.meta.env.VITE_SERVER_URL}/classes`)
       },
+      {
+        path: '/dashboard/myselectedclass',
+        element: <MySelectedClass></MySelectedClass>,
+        loader: () => fetch(`${import.meta.env.VITE_SERVER_URL}/bookings`)
+      },
+      
 
     ]
   },

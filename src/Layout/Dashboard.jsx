@@ -19,6 +19,7 @@ const Dashboard = () => {
                     <ul className="menu p-4 w-64 h-full border-r-2 text-base-content">
                     <li><Link to='/dashboard/addclass' className="text-lg">Add Class</Link></li>  
                     <li><Link to='/dashboard/allclass' className="text-lg">All Class</Link></li>  
+                    <li><Link to='/dashboard/myselectedclass' className="text-lg">My Selected Class</Link></li>  
                     </ul>
 
                 </div>
