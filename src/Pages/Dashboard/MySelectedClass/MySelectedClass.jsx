@@ -1,10 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import MySelectedClassTable from './MySelectedClassTable';
+import Swal from 'sweetalert2';
 
 const MySelectedClass = () => {
-    const myClasses = useLoaderData()
-    console.log(myClasses)
+    const myClassesData = useLoaderData()
+
+ const [myClasses, setMyClasses] = useState(myClassesData) 
+
+    const handleDelete = item => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/bookings/${item._id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                            const remaining = myClasses.filter(cls => cls._id !== item._id);
+                            setMyClasses(remaining);
+                        }
+                    })
+            }
+        })
+    }
+
+
     return (
         <div>
             <div className='uppercase font-semibold flex justify-evenly items-center h-[60px]'>
@@ -29,6 +63,7 @@ const MySelectedClass = () => {
                                 key={item._id}
                                 item={item}
                                 index={index}
+                                handleDelete={handleDelete}
                             >
 
                             </MySelectedClassTable>)

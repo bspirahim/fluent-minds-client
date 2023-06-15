@@ -15,13 +15,14 @@ import UpdateClass from "../Pages/Dashboard/AllClass/UpdateClass";
 import PrivateRoute from "../Pages/PrivateRoute/PrivateRoute";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import MySelectedClass from "../Pages/Dashboard/MySelectedClass/MySelectedClass";
+import ManageUser from "../Pages/Dashboard/ManageUser/ManageUser";
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
-    errorElement:<ErrorPage></ErrorPage>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
@@ -75,7 +76,11 @@ const router = createBrowserRouter([
         element: <MySelectedClass></MySelectedClass>,
         loader: () => fetch(`${import.meta.env.VITE_SERVER_URL}/bookings`)
       },
-      
+      {
+        path: '/dashboard/manageUser',
+        element: <ManageUser></ManageUser>
+      },
+
 
     ]
   },

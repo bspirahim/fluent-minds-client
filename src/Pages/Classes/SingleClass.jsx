@@ -1,14 +1,15 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const SingleClass = () => {
     const { user } = useContext(AuthContext)
     const course = useLoaderData()
-    const { _id, classImage, className, price, instractorName, seats } = course;
+    const { _id, classImage, className, price } = course;
 
     const handleBooking = () => {
-        const bookings = { classID: _id, userName:user?.displayName, userEmail:user?.email,  classImage, className, price }
+        const bookings = { classID: _id, userName: user?.displayName, userEmail: user?.email, classImage, className, price }
         fetch(`http://localhost:5000/bookings`, {
             method: 'POST',
             headers: {
@@ -17,7 +18,16 @@ const SingleClass = () => {
             body: JSON.stringify(bookings)
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'Success',
+                        text: 'Selected Class',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    })
+                }
+            })
     }
 
     return (
