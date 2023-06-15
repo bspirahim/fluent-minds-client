@@ -6,7 +6,7 @@ const Classes = () => {
     return (
         <div className='grid md:grid-cols-3 gap-10 max-w-screen-lg mx-auto my-20'>
             {
-                classes.map(singleClass => 
+                classes.map(singleClass =>
                     <>
 
                         <div className="card w-auto bg-base-100 shadow-xl">
@@ -15,7 +15,7 @@ const Classes = () => {
                             <div className="card-body">
                                 <Link to={`/class/${singleClass._id}`}><h2 className="card-title text-sm">{singleClass.className}</h2></Link>
                                 <small>Instructor: {singleClass.instractorName}</small>
-                                <small>Available Seats: {singleClass.seats}</small>
+                                <small>Available Seats: {(parseInt(singleClass.seats) - parseInt(singleClass.enrolled))}</small>
                             </div>
                         </div>
                     </>

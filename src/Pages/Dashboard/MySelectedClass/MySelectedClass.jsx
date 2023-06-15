@@ -1,12 +1,28 @@
-import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
 import MySelectedClassTable from './MySelectedClassTable';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../../Providers/AuthProvider';
 
 const MySelectedClass = () => {
-    const myClassesData = useLoaderData()
+    const { user, logOut } = useContext(AuthContext);
+    const [myClasses, setMyClasses] = useState()
 
- const [myClasses, setMyClasses] = useState(myClassesData) 
+    useEffect(() => {
+        fetch(`http://localhost:5000/bookings?email=${user?.email}`, {
+            method: 'GET',
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            },
+        })
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    return logOut();
+                }
+                return res.json();
+            })
+            .then(data => setMyClasses(data))
+    }, [])
+
 
     const handleDelete = item => {
         Swal.fire({
@@ -42,11 +58,10 @@ const MySelectedClass = () => {
     return (
         <div>
             <div className='uppercase font-semibold flex justify-evenly items-center h-[60px]'>
-                <h3 className='text-3xl'>My Selected Classes: {myClasses.length}</h3>
+                <h3 className='text-3xl'>My Selected Classes</h3>
             </div>
             <div className="overflow-x-auto">
-                <table className="table">
-                    {/* head */}
+                {myClasses && myClasses.length > 0 ? <table className="table">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -57,20 +72,17 @@ const MySelectedClass = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {
-
-                            myClasses.map((item, index) => <MySelectedClassTable
-                                key={item._id}
-                                item={item}
-                                index={index}
-                                handleDelete={handleDelete}
-                            >
-
-                            </MySelectedClassTable>)
+                        {myClasses?.map((item, index) => <MySelectedClassTable
+                            key={item._id}
+                            item={item}
+                            index={index}
+                            handleDelete={handleDelete}
+                        >
+                        </MySelectedClassTable>)
                         }
 
                     </tbody>
-                </table>
+                </table> : <p className='text-center mt-24'>No data found.</p>}
             </div>
         </div>
     );

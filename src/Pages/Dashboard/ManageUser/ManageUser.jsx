@@ -80,7 +80,7 @@ const ManageUser = () => {
     return (
         <div className='max-w-[95vw] mx-auto'>
             <div>
-                <h1 className='text-center text-purple-600 mt-8 text-4xl font-bold'>My Users</h1>
+                <h1 className='text-center mt-8 text-4xl font-bold'>Manage Users</h1>
                 <div className="overflow-x-auto w-full mx-auto mt-12">
                     <table className="table w-full">
                         {/* head */}

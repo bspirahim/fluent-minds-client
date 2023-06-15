@@ -35,8 +35,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'class/:id',
-        element: <SingleClass></SingleClass>,
-        loader: ({ params }) => fetch(`${import.meta.env.VITE_SERVER_URL}/classes/${params.id}`)
+        element: <SingleClass></SingleClass>
       },
       {
         path: '/login',

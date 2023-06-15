@@ -58,16 +58,12 @@ const AllClass = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {
-
-                            classes.map((item, index) => <AllClassTable
-                                key={item._id}
-                                item={item}
-                                index={index}
-                                handleDelete={handleDelete}
-                            >
-
-                            </AllClassTable>)
+                        {classes.map((item, index) => <AllClassTable
+                            key={item._id}
+                            item={item}
+                            index={index}
+                            handleDelete={handleDelete}
+                        ></AllClassTable>)
                         }
 
                     </tbody>
