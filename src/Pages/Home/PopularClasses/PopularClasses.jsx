@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const PopularClasses = ({limit}) => {
+const PopularClasses = ({ limit }) => {
 
     const [classes, setClasses] = useState([])
     useEffect(() => {

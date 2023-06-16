@@ -14,7 +14,6 @@ const Instrauctor = ({ limit }) => {
 
     return (
         <div>
-            <h1 className='text-center font-bold text-3xl'>Popular Instructors</h1>
             <div className='grid md:grid-cols-3 gap-10 max-w-screen-lg mx-auto mt-20'>
                 {
                     instructors.map(instructor => <InstructorDisplay

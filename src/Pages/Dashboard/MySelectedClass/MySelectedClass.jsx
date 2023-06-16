@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import MySelectedClassTable from './MySelectedClassTable';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../../Providers/AuthProvider';
 
 const MySelectedClass = () => {
     const { user, logOut } = useContext(AuthContext);
-    const [myClasses, setMyClasses] = useState()
+    const [myClasses, setMyClasses] = useState([])
 
     useEffect(() => {
         fetch(`http://localhost:5000/bookings?email=${user?.email}`, {
@@ -21,8 +21,7 @@ const MySelectedClass = () => {
                 return res.json();
             })
             .then(data => setMyClasses(data))
-    }, [])
-
+    }, [user])
 
     const handleDelete = item => {
         Swal.fire({
@@ -58,27 +57,30 @@ const MySelectedClass = () => {
     return (
         <div>
             <div className='uppercase font-semibold flex justify-evenly items-center h-[60px]'>
-                <h3 className='text-3xl'>My Selected Classes</h3>
+                <h3 className='text-3xl'>My Selected Classes:</h3>
             </div>
             <div className="overflow-x-auto">
                 {myClasses && myClasses.length > 0 ? <table className="table">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th className='text-center'>Class</th>
-                            <th className='text-center'>Class Name</th>
-                            <th className='text-center'>Price</th>
-                            <th className='text-center'>Action</th>
+                            <th>Class Name</th>
+                            <th>Price</th>
+                            <th>Payment</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {myClasses?.map((item, index) => <MySelectedClassTable
-                            key={item._id}
-                            item={item}
-                            index={index}
-                            handleDelete={handleDelete}
-                        >
-                        </MySelectedClassTable>)
+                        {
+
+                            myClasses.map((item, index) => <MySelectedClassTable
+                                key={item._id}
+                                item={item}
+                                index={index}
+                                handleDelete={handleDelete}
+                            >
+
+                            </MySelectedClassTable>)
                         }
 
                     </tbody>
