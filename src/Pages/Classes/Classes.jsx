@@ -8,7 +8,6 @@ const Classes = () => {
             {
                 classes.map(singleClass =>
                     <>
-
                         <div className="card w-auto bg-base-100 shadow-xl">
                             <figure><img src={singleClass.classImage} alt="Shoes" /></figure>
                             <p className='absolute right-0 top-2 me-3 px-2 bg-primary rounded-full'>${singleClass.price}</p>
@@ -19,7 +18,6 @@ const Classes = () => {
                             </div>
                         </div>
                     </>
-
 
                 )
             }

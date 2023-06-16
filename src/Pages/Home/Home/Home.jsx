@@ -9,7 +9,7 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <Features></Features>
-            <PopularClasses limit={6}></PopularClasses>
+            <PopularClasses sort="true" limit={6}></PopularClasses>
             <h1 className='text-center font-bold text-3xl'>Popular Instructors</h1>
             <Instrauctor limit={6}></Instrauctor>
         </div>

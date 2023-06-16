@@ -18,6 +18,7 @@ import MySelectedClass from "../Pages/Dashboard/MySelectedClass/MySelectedClass"
 import ManageUser from "../Pages/Dashboard/ManageUser/ManageUser";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import Instrauctor from "../Pages/Instructor/Instrauctor";
+import PaymentHistory from "../Pages/Dashboard/Payment/PaymentHistory";
 
 
 const router = createBrowserRouter([
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/classes',
-        element: <Classes  limit={0}></Classes>,
+        element: <Classes limit={0}></Classes>,
         loader: () => fetch(`${import.meta.env.VITE_SERVER_URL}/classes`)
       },
       {
@@ -88,7 +89,11 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/payment/:id',
         element: <Payment></Payment>,
-        loader: ({params}) => fetch(`${import.meta.env.VITE_SERVER_URL}/bookings/${params.id}`)
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_SERVER_URL}/bookings/${params.id}`)
+      },
+      {
+        path: '/dashboard/paymenthistory',
+        element: <PaymentHistory />
       }
 
 
