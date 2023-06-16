@@ -19,16 +19,18 @@ const SignUp = () => {
         email: null,
         name: null,
         role: 'user',
+        photoURL: null,
         insert: false
     });
 
     useLogin(LoginInfo);
 
-    const jwt = (result, insert = true) => {
+    const jwt = (result, role = 'user', photoURL = null) => {
+        photoURL = photoURL ? photoURL : result.user.photoURL;
         setLoginInfo({
             email: result.user.email,
             name: result.user.displayName,
-            role: 'user',
+            role: 'user', photoURL,
             insert,
         }); setTimeout(() => {
             toast("Signup success!");
@@ -43,7 +45,7 @@ const SignUp = () => {
                 updateUserProfile(data.name, data.photoUrl)
                     .then(() => {
                         reset()
-                        jwt(result);
+                        jwt(result, "user", data.photoUrl);
                     })
                     .catch(error => {
                         toast.error(error.message);

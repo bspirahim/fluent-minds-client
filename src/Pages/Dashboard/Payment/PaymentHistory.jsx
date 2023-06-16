@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
 
 const PaymentHistory = () => {
-    const { user } = useContext(AuthContext);
+    const { user, getRole } = useContext(AuthContext);
     const [myPaymentHistory, setMyPaymentHistory] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/bookings?getPaid=true&email=${user?.email}`)
+        fetch(`http://localhost:5000/bookings?getPaid=true&email=${getRole() == 'admin' ? '' : user?.email}`)
             .then(res => res.json())
             .then(data => setMyPaymentHistory(data))
     }, [])
@@ -31,7 +31,7 @@ const PaymentHistory = () => {
                         {
                             myPaymentHistory.map((pd) => <>
                                 <tr>
-                                    <td><Link to={`/classes/${pd.classID}`}><h2 className="card-title text-sm">{pd.className}</h2></Link></td>
+                                    <td><Link to={`/class/${pd.classID}`}><h2 className="card-title text-sm">{pd.className}</h2></Link></td>
                                     <td>{pd.price}</td>
                                     <td>{pd.transactionId}</td>
                                     <td>{pd.paid}</td>

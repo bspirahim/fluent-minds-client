@@ -18,6 +18,7 @@ const Login = () => {
         email: null,
         name: null,
         role: 'user',
+        photoURL:null,
         insert: false
     });
 
@@ -29,6 +30,7 @@ const Login = () => {
             email: result.user.email,
             name: result.user.displayName,
             role: 'user',
+            photoURL:result.user.photoURL,
             insert,
         }); setTimeout(() => {
             toast("Login success!");

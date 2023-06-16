@@ -75,7 +75,6 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/allclass',
         element: <AllClass></AllClass>,
-        loader: () => fetch(`${import.meta.env.VITE_SERVER_URL}/classes`)
       },
       {
         path: '/dashboard/myselectedclass',

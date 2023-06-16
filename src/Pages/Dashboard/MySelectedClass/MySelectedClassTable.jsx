@@ -12,7 +12,7 @@ const MySelectedClassTable = ({ item, index, handleDelete }) => {
                 </label>
             </th>
             <td>
-                <Link to={`/classes/${item.classID}`}><h2 className="card-title text-sm">{item.className}</h2></Link>
+                <Link to={`/class/${item.classID}`}><h2 className="card-title text-sm">{item.className}</h2></Link>
             </td>
             <td>${item.price}</td>
             <td>{item?.paid != "Paid" ? "Pending" : "Done"}</td>

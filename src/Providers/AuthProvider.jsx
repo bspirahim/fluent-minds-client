@@ -47,9 +47,19 @@ const AuthProvider = ({ children }) => {
         })
     }
 
+
+    const getRole = () => {
+        let data = localStorage.getItem('role');
+        if (data) {
+            return data;
+        } else {
+            return 'user';
+        }
+    }
+
     const authInfo = {
         user,
-        loading,
+        loading, getRole,
         createUser,
         signIn,
         logOut, signInGoogle,
