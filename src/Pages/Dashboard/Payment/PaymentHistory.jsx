@@ -6,7 +6,7 @@ const PaymentHistory = () => {
     const { user, getRole } = useContext(AuthContext);
     const [myPaymentHistory, setMyPaymentHistory] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/bookings?getPaid=true&email=${getRole() == 'admin' ? '' : user?.email}`)
+        fetch(`${import.meta.env.VITE_SERVER_URL}/bookings?getPaid=true&email=${getRole() == 'admin' ? '' : user?.email}`)
             .then(res => res.json())
             .then(data => setMyPaymentHistory(data))
     }, [])

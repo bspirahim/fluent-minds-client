@@ -13,7 +13,7 @@ const Banner = () => {
           <Link to="/classes"><button className="btn btn-primary rounded-full text-white font-normal text-lg my-4">Get Started</button></Link>
         </div>
         <div className="w-2/4">
-          <img className="" src="/public/images/Photos/Illustration.png" alt="" />
+          <img className="" src="/images/Photos/Illustration.png" alt="" />
         </div>
       </div>
     </div>

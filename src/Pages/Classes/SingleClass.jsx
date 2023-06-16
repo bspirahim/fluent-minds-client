@@ -21,7 +21,7 @@ const SingleClass = () => {
 
     const handleBooking = () => {
         const bookings = { classID: _id, userName: user?.displayName, userEmail: user?.email, classImage, className, price }
-        fetch(`http://localhost:5000/bookings`, {
+        fetch(`${import.meta.env.VITE_SERVER_URL}/bookings`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

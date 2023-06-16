@@ -8,7 +8,7 @@ const MySelectedClass = () => {
     const [myClasses, setMyClasses] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/bookings?email=${user?.email}`, {
+        fetch(`${import.meta.env.VITE_SERVER_URL}/bookings?email=${user?.email}`, {
             method: 'GET',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -34,7 +34,7 @@ const MySelectedClass = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/bookings/${item._id}`, {
+                fetch(`${import.meta.env.VITE_SERVER_URL}/bookings/${item._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

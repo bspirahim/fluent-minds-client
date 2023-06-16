@@ -44,8 +44,6 @@
 10. Packages/Technologies Used
     - React
     - React Router
-    - React Query
-    - Axios
+    - React Stripe
     - React Hook Form
-    - Framer Motion (for animations)
-    - Bootstrap (or any other CSS framework)
+    - Tailwind

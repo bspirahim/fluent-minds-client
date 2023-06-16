@@ -5,7 +5,7 @@ const Instrauctor = ({ limit }) => {
 
     const [instructors, setInstructors] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/users?getInstructor=true&limit=${limit}`)
+        fetch(`${import.meta.env.VITE_SERVER_URL}/users?getInstructor=true&limit=${limit}`)
             .then(res => res.json())
             .then(data => {
                 setInstructors(data)

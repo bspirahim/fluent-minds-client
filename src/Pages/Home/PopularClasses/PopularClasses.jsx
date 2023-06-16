@@ -5,7 +5,7 @@ const PopularClasses = ({ limit }) => {
 
     const [classes, setClasses] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/classes?email&limit=${limit}&sort=true`)
+        fetch(`${import.meta.env.VITE_SERVER_URL}/classes?email&limit=${limit}&sort=true`)
             .then(res => res.json())
             .then(data => setClasses(data));
     }, [])
