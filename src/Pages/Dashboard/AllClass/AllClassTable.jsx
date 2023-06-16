@@ -23,7 +23,7 @@ const AllClassTable = ({ item, index, handleDelete }) => {
             <td className='text-'>{item.instractorName}</td>
             <td className='text-'>${item.price}</td>
             <th>
-                <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-700 btn-md text-white mr-3"><FaTrashAlt></FaTrashAlt></button>
+                <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-700 btn-md text-white"><FaTrashAlt></FaTrashAlt></button>
                 <Link to={`/dashboard/updateclass/${item._id}`}> <button className="btn btn-ghost bg-sky-700 btn-md text-white"><FaPencilAlt></FaPencilAlt></button></Link>
             </th>
         </tr>

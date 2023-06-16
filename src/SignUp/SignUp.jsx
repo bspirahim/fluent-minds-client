@@ -31,7 +31,7 @@ const SignUp = () => {
             email: result.user.email,
             name: result.user.displayName,
             role: 'user', photoURL,
-            insert,
+            insert:true,
         }); setTimeout(() => {
             toast("Signup success!");
             navigate(from, { replace: true });
