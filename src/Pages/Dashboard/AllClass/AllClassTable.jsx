@@ -19,7 +19,7 @@ const AllClassTable = ({ item, index, handleDelete }) => {
                     </div>
                 </div>
             </td>
-            <td><Link to={`/class/${item._id}`}>{item.className}</Link></td>
+            <td><Link to={`/class/${item._id}`}><h2 className='font-bold'>{item.className}</h2></Link></td>
             <td className='text-end'>${item.price}</td>
             <th>
                 <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-700 btn-md text-white mr-3"><FaTrashAlt></FaTrashAlt></button>

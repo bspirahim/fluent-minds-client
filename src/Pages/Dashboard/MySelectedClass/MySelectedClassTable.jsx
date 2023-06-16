@@ -21,12 +21,12 @@ const MySelectedClassTable = ({ item, index, handleDelete }) => {
                 </div>
             </td>
             <td>
-                <Link to={`/class/${item.classID}`}><h2 className="card-title text-sm">{item.className}</h2></Link>
+                <Link to={`/class/${item.classID}`}><h2 className="card-title text-sm font-bold">{item.className}</h2></Link>
             </td>
             <td className='text-end'>${item.price}</td>
             <th>
                 <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-700 btn-md text-white mr-3"><FaTrashAlt></FaTrashAlt></button>
-                <button className="btn btn-ghost bg-sky-700 btn-md text-white mr-3">Pay</button>
+               <Link to={`/dashboard/payment/${item._id}`}> <button className="btn btn-ghost bg-sky-700 btn-md text-white mr-3">Pay</button></Link>
             </th>
         </tr>
     );

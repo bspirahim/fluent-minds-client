@@ -16,6 +16,8 @@ import PrivateRoute from "../Pages/PrivateRoute/PrivateRoute";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import MySelectedClass from "../Pages/Dashboard/MySelectedClass/MySelectedClass";
 import ManageUser from "../Pages/Dashboard/ManageUser/ManageUser";
+import Payment from "../Pages/Dashboard/Payment/Payment";
+import Instrauctor from "../Pages/Instructor/Instrauctor";
 
 
 const router = createBrowserRouter([
@@ -29,8 +31,12 @@ const router = createBrowserRouter([
         element: <Home></Home>
       },
       {
+        path: '/instructor',
+        element: <Instrauctor limit={0}></Instrauctor>
+      },
+      {
         path: '/classes',
-        element: <Classes></Classes>,
+        element: <Classes  limit={0}></Classes>,
         loader: () => fetch(`${import.meta.env.VITE_SERVER_URL}/classes`)
       },
       {
@@ -79,6 +85,11 @@ const router = createBrowserRouter([
         path: '/dashboard/manageUser',
         element: <ManageUser></ManageUser>
       },
+      {
+        path: '/dashboard/payment/:id',
+        element: <Payment></Payment>,
+        loader: ({params}) => fetch(`${import.meta.env.VITE_SERVER_URL}/bookings/${params.id}`)
+      }
 
 
     ]
