@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import Lottie from "lottie-react";
+import reader from "../../../../public/class.json";
 
 
 const Banner = () => {
@@ -12,8 +14,8 @@ const Banner = () => {
           <p className="py-2">In a world driven by constant innovation and the pursuit of knowledge, our minds are the key to unlocking limitless potential. Welcome to Fluent Minds, where the power of language and communication transcends boundaries and opens doors to new opportunities.</p>
           <Link to="/classes"><button className="btn btn-primary rounded-full text-white font-normal text-lg my-4">Get Started</button></Link>
         </div>
-        <div className="w-2/4">
-          <img className="" src="/images/Photos/Illustration.png" alt="" />
+        <div className="w-3/5">
+        <Lottie animationData={reader} loop={true} />
         </div>
       </div>
     </div>
