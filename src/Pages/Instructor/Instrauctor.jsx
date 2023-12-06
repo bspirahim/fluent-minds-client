@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import InstructorDisplay from './InstructorDisplay';
+import Marquee from 'react-fast-marquee';
 
 const Instrauctor = ({ limit }) => {
 
@@ -11,10 +12,11 @@ const Instrauctor = ({ limit }) => {
                 setInstructors(data)
             })
     }, [])
+    console.log(instructors);
 
     return (
         <div>
-            <div className='grid md:grid-cols-3 gap-10 max-w-screen-lg mx-auto mt-20'>
+            <div className='grid grid-cols-6 gap-10  my-20'>
                 {
                     instructors.map(instructor => <InstructorDisplay
                         key={instructor._id}

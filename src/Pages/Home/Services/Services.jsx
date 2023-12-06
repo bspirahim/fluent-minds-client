@@ -4,16 +4,17 @@ const Services = () => {
     return (
         <div className='mt-12 p-3'>
             <div className='md:w-2/4 px-2 mx-auto text-center'>
-                <h1 className='md:text-center md:text-3xl text-xl'>Our Best Services</h1>
+                <h1 className='md:text-center md:text-3xl text-xl font-bold'>Our Best Services</h1>
+                <span className="w-20 h-1 bg-[#2ECC70] inline-block rounded-2xl"></span>
                 <p className='mt-2'>Discover excellence with our premier online courses. Elevate your skills through expert-led modules, interactive content, and personalized support. Join a thriving learning community and embark on a transformative educational journey for success.</p>
-                <span className="w-20 h-1 bg-green-500 inline-block rounded-2xl"></span>
+
             </div>
             <div className="md:grid grid-cols-4 gap-4 items-center max-w-screen-lg mx-auto mt-12 ">
                 <div className="text-center h-full">
-                    <div className='w-1/2 border-[#28af60] mx-auto border rounded-full p-1'>
-                    <div className='w-full bg-green-500 p-1 rounded-full '>
-                        <img className="w-24 p-6 mx-auto" src="../../../../public/images/service_icon/icon_01.png" alt="" />
-                    </div>
+                    <div className='w-[100px] h-[100px] border-[#F9AE39] mx-auto border-2 rounded-full'>
+                        <div className='w-24 h-24 bg-[#2ECC70] p-1 rounded-full flex items-center '>
+                            <img className="w-24 p-6 mx-auto" src="/images/service_icon/icon_01.png" alt="" />
+                        </div>
                     </div>
                     <div className="my-3">
                         <p className="text-lg font-bold pb-1">Professional Courses</p>
@@ -21,10 +22,10 @@ const Services = () => {
                     </div>
                 </div>
                 <div className="text-center h-full">
-                    <div className='w-1/2 border-[#28af60] mx-auto border rounded-full p-1'>
-                    <div className='w-full   bg-green-500 p-1 rounded-full '>
-                        <img className="w-24 h-24 p-6 mx-auto" src="../../../../public/images/service_icon/icon_02.png" alt="" />
-                    </div>
+                    <div className='w-[100px] h-[100px] border-[#F9AE39] mx-auto border-2 rounded-full'>
+                        <div className='w-24 h-24 bg-[#2ECC70] p-1 rounded-full flex items-center '>
+                            <img className="w-24 p-6 mx-auto" src="/images/service_icon/icon_02.png" alt="" />
+                        </div>
                     </div>
                     <div className="my-3">
                         <p className="text-lg font-bold pb-1">Experienced Instructors</p>
@@ -32,10 +33,10 @@ const Services = () => {
                     </div>
                 </div>
                 <div className="text-center h-full">
-                    <div className='w-1/2 border-[#28af60] mx-auto border rounded-full p-1'>
-                    <div className='w-full   bg-green-500 p-1 rounded-full '>
-                        <img className="w-24 h-24 p-6 mx-auto" src="../../../../public/images/service_icon/icon_03.png" alt="" />
-                    </div>
+                    <div className='w-[100px] h-[100px] border-[#F9AE39] mx-auto border-2 rounded-full'>
+                        <div className='w-24 h-24 bg-[#2ECC70] p-1 rounded-full flex items-center '>
+                            <img className="w-24 p-6 mx-auto" src="/images/service_icon/icon_03.png" alt="" />
+                        </div>
                     </div>
                     <div className="my-3">
                         <p className="text-lg font-bold pb-1">Practical Traning</p>
@@ -43,10 +44,10 @@ const Services = () => {
                     </div>
                 </div>
                 <div className="text-center h-full">
-                    <div className='w-1/2 border-[#28af60] mx-auto border rounded-full p-1'>
-                    <div className='w-full   bg-green-500 p-1 rounded-full '>
-                        <img className="w-24 h-24 p-6 mx-auto" src="../../../../public/images/service_icon/icon_04.png" alt="" />
-                    </div>
+                    <div className='w-[100px] h-[100px] border-[#F9AE39] mx-auto border-2 rounded-full'>
+                        <div className='w-24 h-24 bg-[#2ECC70] p-1 rounded-full flex items-center '>
+                            <img className="w-24 p-6 mx-auto" src="/images/service_icon/icon_04.png" alt="" />
+                        </div>
                     </div>
                     <div className="my-3">
                         <p className="text-lg font-bold pb-1">Validated Certificated</p>

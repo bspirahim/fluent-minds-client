@@ -11,7 +11,10 @@ const PopularClasses = ({ limit }) => {
     }, [])
     return (
         <div className='mt-20'>
-            <h1 className='text-center font-bold text-3xl'>Popular Classes</h1>
+             <div className='md:w-2/4 px-2 mx-auto text-center'>
+                <h1 className='md:text-center md:text-3xl text-xl font-bold'>Popular Classes</h1>
+                <span className="w-20 h-1 bg-[#2ECC70] inline-block rounded-2xl"></span>
+            </div>
             <div className='grid md:grid-cols-3 gap-10 max-w-screen-lg mx-auto my-20 px-5'>
                 {
                     classes.map(singleClass =>
@@ -19,7 +22,7 @@ const PopularClasses = ({ limit }) => {
 
                             <div className="card w-auto bg-base-100 shadow-xl">
                                 <figure><img src={singleClass.classImage} alt="Shoes" /></figure>
-                                <p className='absolute right-0 top-2 me-3 px-2 bg-primary rounded-full'>${singleClass.price}</p>
+                                <p className='absolute right-0 top-2 me-3 px-2 bg-[#2ECC70] rounded-full'>${singleClass.price}</p>
                                 <div className="card-body">
                                     <Link to={`/class/${singleClass._id}`}><h2 className="card-title text-sm">{singleClass.className}</h2></Link>
                                     <small>Instructor: {singleClass.instractorName}</small>
