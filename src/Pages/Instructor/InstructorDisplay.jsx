@@ -8,7 +8,7 @@ const InstructorDisplay = ({ instructor }) => {
                 <img className='w-52 mx-auto border-2 border-[#F9AE39] rounded-full' src={instructor?.photoURL} alt="" />
                 <div className='mt-5'>
                     <p className='font-bold'>{name}</p>
-                    <p>{email}</p>
+                    <p className='break-all'>{email}</p>
                 </div>
             </div>
         </div>

@@ -17,7 +17,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import MySelectedClass from "../Pages/Dashboard/MySelectedClass/MySelectedClass";
 import ManageUser from "../Pages/Dashboard/ManageUser/ManageUser";
 import Payment from "../Pages/Dashboard/Payment/Payment";
-import Instrauctor from "../Pages/Instructor/Instrauctor";
+import Instructor from "../Pages/Instructor/Instructor";
 import PaymentHistory from "../Pages/Dashboard/Payment/PaymentHistory";
 
 
@@ -33,7 +33,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/instructor',
-        element: <Instrauctor limit={0}></Instrauctor>
+        element: <Instructor limit={0}></Instructor>
       },
       {
         path: '/classes',

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import InstructorDisplay from './InstructorDisplay';
 import Marquee from 'react-fast-marquee';
 
-const Instrauctor = ({ limit }) => {
+const InstructorHome = ({ limit }) => {
 
     const [instructors, setInstructors] = useState([])
     useEffect(() => {
@@ -16,7 +16,7 @@ const Instrauctor = ({ limit }) => {
 
     return (
         <div>
-            <div className='grid grid-cols-6 gap-10  my-20'>
+            <div className='md:flex gap-10  my-20'>
                 {
                     instructors.map(instructor => <InstructorDisplay
                         key={instructor._id}
@@ -30,4 +30,4 @@ const Instrauctor = ({ limit }) => {
     );
 };
 
-export default Instrauctor;
+export default InstructorHome;

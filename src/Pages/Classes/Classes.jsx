@@ -4,7 +4,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 const Classes = () => {
     const classes = useLoaderData()
     return (
-        <div className='grid md:grid-cols-3 gap-10 max-w-screen-lg mx-auto my-20'>
+        <div className='grid md:grid-cols-3 gap-10 max-w-screen-lg mx-auto my-12 p-4'>
             {
                 classes.map(singleClass =>
                     <>
